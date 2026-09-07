@@ -1,17 +1,15 @@
 {
-  "status": "ok",
-  "generated_at": "2026-09-07T14:57:42.253716+00:00",
-  "datasets": [
+  "status": "degraded",
+  "generated_at": "2026-09-07T14:58:43.495577+00:00",
+  "datasets": [],
+  "failures": [
     {
       "id": "rt_da_price",
-      "rows": 16,
-      "sha256": "1cbe64736f68954cceaf61ac015c8b28ec6ddfc421f669f0545eb0a7dc183ee9"
+      "error": "feed returned HTML shell (no API key?) not CSV \u2014 refusing to snapshot"
     },
     {
       "id": "da_hrl_lmps",
-      "rows": 16,
-      "sha256": "1cbe64736f68954cceaf61ac015c8b28ec6ddfc421f669f0545eb0a7dc183ee9"
+      "error": "feed returned HTML shell (no API key?) not CSV \u2014 refusing to snapshot"
     }
-  ],
-  "failures": []
+  ]
 }
