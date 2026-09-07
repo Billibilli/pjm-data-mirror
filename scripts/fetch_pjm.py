@@ -57,9 +57,11 @@ def fetch(url: str, attempts: int = 3, timeout: int = 120) -> bytes:
 def canonical_csv(raw: bytes) -> bytes:
     """Parse CSV rows, re-serialize with sorted column order + stable row sort."""
     text = raw.decode("utf-8", "replace")
+    if "<!doctype html" in text[:500].lower() or "<html" in text[:500].lower() or "bundle.js" in text[:2000]:
+        raise RuntimeError("feed returned HTML shell (no API key?) not CSV — refusing to snapshot")
     reader = csv.DictReader(io.StringIO(text))
     if not reader.fieldnames:
-        return raw
+        raise RuntimeError("feed returned no CSV columns — refusing to snapshot")
     rows = [dict(r) for r in reader if any((v or "").strip() for v in r.values())]
     # stable sort by first 2 columns (datetime-like first)
     cols = list(reader.fieldnames)
