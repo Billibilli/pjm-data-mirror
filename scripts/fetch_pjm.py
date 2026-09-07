@@ -73,6 +73,8 @@ def canonical_csv(raw: bytes) -> bytes:
 
 
 def main() -> int:
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    META_DIR.mkdir(parents=True, exist_ok=True)
     now = datetime.now(timezone.utc).isoformat()
     errors = {}
     manifest = {"status": "ok", "generated_at": now, "datasets": [], "failures": []}
